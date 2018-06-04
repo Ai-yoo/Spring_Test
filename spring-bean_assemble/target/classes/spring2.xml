@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="student" class="com.du.test2.Student"/>
+    <!--根据属性名字实现自动装配 byName-->
+    <bean id="user1" class="com.du.test2.User" autowire="byName"/>
+
+    <!--根据属性类型实现自动装配 byType-->
+    <bean id="user2" class="com.du.test2.User" autowire="byType"/>
+
+    <!--根据构造方法现自动装配-->
+    <bean id="user3" class="com.du.test2.User" autowire="constructor"/>
+
+    <bean id="user4" class="com.du.test2.User" autowire="no">
+        <constructor-arg>
+            <ref bean="student"/>
+        </constructor-arg>
+    </bean>
+
+</beans>
